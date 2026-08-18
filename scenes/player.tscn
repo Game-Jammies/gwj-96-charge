@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bgxcwwiokrdlx"]
 
 [ext_resource type="Texture2D" uid="uid://cwjql601reg2e" path="res://gwj-96-charge/assets/dev/char.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bn2sielq3or3" path="res://gwj-96-charge/scripts/character_controller.gd" id="1_g2els"]
 
-[node name="Player" type="CharacterBody2D" unique_id=199594373]
+[node name="Player" type="Node2D" unique_id=272435193]
+script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=127712377]
 texture = ExtResource("1_3vyb7")
