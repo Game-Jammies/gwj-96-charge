@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bgxcwwiokrdlx"]
+
+[ext_resource type="Texture2D" uid="uid://cwjql601reg2e" path="res://gwj-96-charge/assets/dev/char.png" id="1_3vyb7"]
+
+[node name="Player" type="CharacterBody2D" unique_id=199594373]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=127712377]
+texture = ExtResource("1_3vyb7")
