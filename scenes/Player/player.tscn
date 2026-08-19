@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bgxcwwiokrdlx"]
+
+[ext_resource type="Script" uid="uid://bn2sielq3or3" path="res://scenes/Player/character_controller.gd" id="1_gqjuk"]
+[ext_resource type="Texture2D" uid="uid://cwjql601reg2e" path="res://gwj-96-charge/assets/dev/char.png" id="2_gqjuk"]
+[ext_resource type="PackedScene" uid="uid://drsta0n4u4nrm" path="res://scenes/Charge-Bar/charge-bar.tscn" id="3_c4h5g"]
+
+[node name="Player" type="Node2D" unique_id=272435193]
+script = ExtResource("1_gqjuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=127712377]
+texture = ExtResource("2_gqjuk")
+
+[node name="ChargeBar" parent="." unique_id=362797142 instance=ExtResource("3_c4h5g")]
+unique_name_in_owner = true
+offset_left = -94.0
+offset_top = -122.0
+offset_right = -62.0
+offset_bottom = -110.0
+metadata/_edit_use_anchors_ = true

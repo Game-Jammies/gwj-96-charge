@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://drsta0n4u4nrm"]
+
+[ext_resource type="Script" uid="uid://cdbpm3yu7s3x" path="res://scenes/Charge-Bar/charge_bar.gd" id="1_4t3ol"]
+[ext_resource type="Texture2D" uid="uid://bn4mgw7iewtbw" path="res://scenes/Charge-Bar/PlayerChargeBarUnder.png" id="2_q5syn"]
+[ext_resource type="Texture2D" uid="uid://kf3vcgkq4nt7" path="res://scenes/Charge-Bar/PlayerChargeBarOver.png" id="3_mlqrb"]
+[ext_resource type="Texture2D" uid="uid://6ijgqegqdk8h" path="res://scenes/Charge-Bar/PlayerChargeBarProgress.png" id="4_jlkv0"]
+
+[node name="ChargeBar" type="TextureProgressBar" unique_id=1833863144]
+texture_filter = 1
+anchors_preset = -1
+offset_left = -64.0
+offset_top = -25.0
+offset_right = -32.0
+offset_bottom = -13.0
+scale = Vector2(4, 4)
+value = 50.0
+rounded = true
+texture_under = ExtResource("2_q5syn")
+texture_over = ExtResource("3_mlqrb")
+texture_progress = ExtResource("4_jlkv0")
+texture_progress_offset = Vector2(7, 0)
+script = ExtResource("1_4t3ol")
