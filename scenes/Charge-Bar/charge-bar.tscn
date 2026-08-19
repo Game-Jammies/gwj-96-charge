@@ -9,15 +9,17 @@
 script = ExtResource("1_4t3ol")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1106372650]
+unique_name_in_owner = true
 texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -16.0
-offset_top = -17.0
-offset_right = 16.0
-offset_bottom = -5.0
+offset_left = -64.0
+offset_top = -61.0
+offset_right = -32.0
+offset_bottom = -49.0
 grow_horizontal = 2
+scale = Vector2(4, 4)
 value = 50.0
 rounded = true
 texture_under = ExtResource("2_q5syn")
