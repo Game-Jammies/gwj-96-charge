@@ -10,27 +10,32 @@ class_name ChargeBar extends Node2D
 var current_charge: float = 0.0
 
 func _process(delta: float) -> void: 
+	# NOTE: This will most likely move to player script, add Direction and Damage
 	if Input.is_action_pressed("charge_up"):
-		var fill_rate: float = progress_bar.max_value / total_charge_time
-		current_charge = minf(current_charge + fill_rate * delta, progress_bar.max_value)
-		progress_bar.value = current_charge
-	
-		
-	else:
+		_charge_bar(delta)
+	elif Input.is_action_pressed("charge_down"):
+		_charge_bar(delta)
+	elif Input.is_action_pressed("charge_left"):
+		_charge_bar(delta)
+	elif Input.is_action_pressed("charge_right"):
+		_charge_bar(delta)
+	elif Input.is_action_just_released("charge_up") or Input.is_action_just_released("charge_down") or Input.is_action_just_released("charge_left") or Input.is_action_just_released("charge_right"):
 		_release_attack(_get_charged_segments())
-	pass
 
 func _ready() -> void:
 	progress_bar.value = 0
-	pass
-	
+
+
+func _charge_bar(delta: float) -> void:
+	var fill_rate: float = progress_bar.max_value / total_charge_time
+	current_charge = minf(current_charge + fill_rate * delta, progress_bar.max_value)
+	progress_bar.value = current_charge
+
 func _get_charged_segments() -> int:
 	var per_segment: float = progress_bar.max_value / segment_count
 	return clampi(floori(current_charge / per_segment), 0, segment_count)
 
 func _release_attack(charge: int) -> void: 
-	if charge == 0:
-		return
 	print("Charged %d segments" % charge)
 	current_charge = 0.0
 	progress_bar.value = 0.0
