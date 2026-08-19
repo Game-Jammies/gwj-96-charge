@@ -8,6 +8,10 @@ signal attack_released
 enum ChargeDir {NONE, UP, DOWN, LEFT, RIGHT}
 var charge_state: ChargeDir = ChargeDir.NONE #hands which direction the player is holding*
 
+## Seconds after releasing an attack before charging can start again.
+@export var attack_cooldown_time: float = 0.5
+var cooldown_remaining: float = 0.0
+
 @onready var charge_bar: ChargeBar = %ChargeBar
 
 func _ready() -> void:
@@ -16,6 +20,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if cooldown_remaining > 0.0:
+		cooldown_remaining -= delta
+		return
+
 	#button pressed and held
 	if Input.is_action_pressed("charge_up"):
 		#handle charging up
@@ -37,5 +45,6 @@ func _process(delta: float) -> void:
 		"""Function for activating a charge"""
 		attack_released.emit()
 		charge_state = ChargeDir.NONE
+		cooldown_remaining = attack_cooldown_time
 		
 		
