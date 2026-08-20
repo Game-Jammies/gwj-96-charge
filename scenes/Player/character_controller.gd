@@ -1,4 +1,4 @@
-class_name Player extends Node2D
+class_name Player extends CharacterBody2D
 
 """This is the player controller, handling inputs for the charges"""
 
@@ -70,14 +70,18 @@ func _move(charge_dir: ChargeDir):
 		dir = Vector2.RIGHT
 	else:
 		dir = Vector2.ZERO
-	
-	global_position += dir * TILE_SIZE * charge_bar.get_charged_segments()
-	sprite.global_position -= dir * TILE_SIZE * charge_bar.get_charged_segments()
-	
+	var move_amount: Vector2 = dir * TILE_SIZE * charge_bar.get_charged_segments()
+	move_and_collide(move_amount) #Move the physics body first
+	# Move the sprites after
+	var sprite_target: Vector2 = global_position
+	var charge_bar_target: Vector2 = charge_bar.global_position
+	sprite.global_position -= move_amount
+	charge_bar.global_position -= move_amount
+	# Use a tween for a smooth transition
 	if sprite_node_pos_tween:
 		sprite_node_pos_tween.kill()
 	sprite_node_pos_tween = create_tween()
 	sprite_node_pos_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	sprite_node_pos_tween.tween_property(sprite, "global_position", global_position, 0.185).set_trans(Tween.TRANS_SINE)
-	
-	pass
+	sprite_node_pos_tween.set_parallel(true)
+	sprite_node_pos_tween.tween_property(sprite, "global_position", sprite_target, 0.3).set_trans(Tween.TRANS_SINE)
+	sprite_node_pos_tween.tween_property(charge_bar, "global_position", charge_bar_target, 0.3).set_trans(Tween.TRANS_SINE)
