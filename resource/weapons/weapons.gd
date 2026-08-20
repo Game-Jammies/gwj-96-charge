@@ -26,4 +26,7 @@ func get_charge_time() -> float:
 	return max_charge_time
 
 func get_cooldown_time() -> float:
-	return get_cooldown_time()
+	return attack_cooldown_time
+
+func get_charge_distance() -> int:
+	return charge_distance

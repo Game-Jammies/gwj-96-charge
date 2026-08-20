@@ -16,12 +16,25 @@ func add_charge(delta: float) -> void:
 	self.value = current_charge
 
 
-func get_charged_segments() -> int:
-	var per_segment: float = self.max_value / segment_count
-	return clampi(floori(current_charge / per_segment), 0, segment_count)
-
 func release_charge() -> void:
 	var charge: int = get_charged_segments()
 	print("Charged %d segments" % charge)
+	reset_bar()
+	
+func reset_bar() -> void:
+	#safety function
 	current_charge = 0.0
 	self.value = 0.0
+
+## getters and setters
+func get_charged_segments() -> int:
+	var per_segment: float = self.max_value / segment_count
+	return clampi(floori(current_charge / per_segment), 0, segment_count)
+	
+func set_charge_time(new_time:float) -> void:
+	total_charge_time = new_time
+	reset_bar()
+	
+func set_charge_dist(new_seg:int) -> void:
+	segment_count = new_seg
+	reset_bar()
