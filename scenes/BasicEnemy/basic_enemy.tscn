@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://2kkiy54ffnty"]
+
+[ext_resource type="Script" uid="uid://b1smdex1ljut3" path="res://scenes/BasicEnemy/basic_enemy.gd" id="1_h65lk"]
+[ext_resource type="Texture2D" uid="uid://pw32ys47l2ko" path="res://gwj-96-charge/assets/dev/Enemy.png" id="1_kmals"]
+[ext_resource type="Texture2D" uid="uid://dsr6g2iwn78tg" path="res://scenes/EnemyChargeBar/EnemyChargeBarUnder.png" id="3_wnted"]
+[ext_resource type="Texture2D" uid="uid://yni5kxoyynpo" path="res://scenes/EnemyChargeBar/EnemyChargeBarOver.png" id="4_ju5so"]
+[ext_resource type="Texture2D" uid="uid://dc0oerdmvhxt2" path="res://scenes/EnemyChargeBar/EnemyChargeBarProgress.png" id="5_aceem"]
+[ext_resource type="Script" uid="uid://cdbpm3yu7s3x" path="res://scenes/Charge-Bar/charge_bar.gd" id="6_ju5so"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgqhp"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju5so"]
+size = Vector2(32, 32)
+
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=1620114008]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_h65lk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=9497974]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_kmals")
+
+[node name="ChargeBar" type="TextureProgressBar" parent="." unique_id=536324989]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -16.0
+offset_top = -55.0
+offset_bottom = -47.0
+scale = Vector2(2, 2)
+value = 50.0
+texture_under = ExtResource("3_wnted")
+texture_over = ExtResource("4_ju5so")
+texture_progress = ExtResource("5_aceem")
+script = ExtResource("6_ju5so")
+segment_count = 2
+
+[node name="up" type="RayCast2D" parent="." unique_id=2018532855]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+target_position = Vector2(0, -32)
+hit_from_inside = true
+
+[node name="down" type="RayCast2D" parent="." unique_id=1675210313]
+unique_name_in_owner = true
+position = Vector2(0, 32)
+target_position = Vector2(0, 32)
+hit_from_inside = true
+
+[node name="left" type="RayCast2D" parent="." unique_id=822244630]
+unique_name_in_owner = true
+position = Vector2(-32, 0)
+target_position = Vector2(-32, 0)
+hit_from_inside = true
+
+[node name="right" type="RayCast2D" parent="." unique_id=1314843551]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+target_position = Vector2(32, 0)
+hit_from_inside = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631636306]
+shape = SubResource("RectangleShape2D_pgqhp")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1950498178]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1959192882 groups=["enemy"]]
+shape = SubResource("RectangleShape2D_ju5so")

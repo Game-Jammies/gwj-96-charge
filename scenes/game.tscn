@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://hqheorkgmtpp" path="res://scenes/game.gd" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://475pjd4gnwqu" path="res://gwj-96-charge/assets/dev/basic-tiles.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bgxcwwiokrdlx" path="res://scenes/Player/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://2kkiy54ffnty" path="res://scenes/BasicEnemy/basic_enemy.tscn" id="4_lbhrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -30,3 +31,6 @@ tile_set = SubResource("TileSet_2jgpe")
 
 [node name="Player" parent="." unique_id=272435193 instance=ExtResource("2_yqjtg")]
 position = Vector2(544, 288)
+
+[node name="BasicEnemy" parent="." unique_id=1620114008 instance=ExtResource("4_lbhrr")]
+position = Vector2(224, 96)

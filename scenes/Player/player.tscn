@@ -5,9 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://drsta0n4u4nrm" path="res://scenes/Charge-Bar/charge-bar.tscn" id="3_c4h5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgqhp"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0153"]
 size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=1720092649]
+[node name="Player" type="CharacterBody2D" unique_id=1720092649 groups=["player"]]
 script = ExtResource("1_gqjuk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=127712377]
@@ -51,3 +54,11 @@ unique_name_in_owner = true
 position = Vector2(32, 0)
 target_position = Vector2(32, 0)
 hit_from_inside = true
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=2103338357 groups=["player"]]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1948778014]
+shape = SubResource("RectangleShape2D_m0153")
