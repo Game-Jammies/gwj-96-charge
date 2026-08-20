@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://bxw3x1kpvvbgc"]
+
+[ext_resource type="Script" uid="uid://3amvmmp3wuiq" path="res://resource/weapons/weapons.gd" id="1_o1xut"]
+
+[resource]
+script = ExtResource("1_o1xut")
+name = "Basic"
+damage = 1.0
+max_charge_dmg_bonus = 1.0
+max_charge_time = 3.0
+charge_distance = 4

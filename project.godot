@@ -20,6 +20,13 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://resource/": "yellow",
+"res://resources/": "yellow"
+}
+
 [input]
 
 charge_up={
